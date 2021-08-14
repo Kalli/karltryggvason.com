@@ -1,0 +1,231 @@
+
+
+.hero-unit img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.entry p{
+    font-size:16px;
+    font-weight: 200;
+    line-height: 20px;
+    padding-bottom: 10px;
+}
+
+blockquote p{
+    margin: 0, 0, 10px;
+}
+
+.notes-container{
+    display:none;
+}
+
+.hero-unit, .entry{
+    background-color: #C7C4C4;
+}
+
+.hero-unit li{
+    font-weight: 200;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.speech-bubble{
+    display: none;
+}
+
+.CAPTION, .caption{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+.hero-unit iframe,object{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+}
+
+.hero-unit p{
+    line-height: 20px;
+}
+
+.hero-unit ol{
+    font-weight: 200;
+    font-size: 16px;
+}
+
+body{
+    padding: 50px;
+    background-image: url("/img/background/creampaper.png"); 
+    /* yay subtle patterns http://subtlepatterns.com/ */
+}
+
+.project{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+@media only screen and (min-device-width: 220px){
+    .hero-unit{
+        padding: 10px 20px 10px 20px ;
+    }
+    body{
+        padding: 0 0 0 0;
+    }
+    .navbar-fixed-top{
+        margin-right: -5px;
+        margin-left: -5px;
+    }
+}
+
+@media only screen and (min-device-width: 600px){
+    .hero-unit{
+        padding: 30px 60px 30px 60px;
+    }
+    body{
+        padding: 0 0 0 0;
+    } 
+    .navbar-fixed-top{
+        margin-right: -10px;
+        margin-left: -10px;
+    }
+}
+
+@media only screen and (min-device-width: 992px){
+
+    .project:hover .info {
+        display: block;
+    }
+    .hero-unit{
+        padding: 30px 60px 30px 60px;
+    }
+    body > .container-fluid{
+        margin-top: 60px;    
+    }
+}
+
+.project {
+    position: relative;
+}
+
+.info{
+    position: absolute;
+    display: none;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0.8;
+    z-index: 2;
+    background-image: url("/img/background/creampaper.png"); 
+}
+
+.info p {
+  padding: 15% 15% 15% 15%;
+  font-size: 22px; 
+  color: #333; 
+}
+
+.center {
+    text-align:center;
+    padding: 20px;
+}
+
+.mixcloud{
+    width: 100%;
+}
+
+.mobile-info a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*
+
+Style for footer Social media icons
+
+*/
+.sm ul{
+    padding: 0 0 20px 0;
+    margin: 0 0 10px 0;
+}
+
+.sm ul li {
+    list-style :none;
+    padding: 0 0 0 4px;
+    float: left;
+}
+.sm ul li a {
+    font-size: 20px;
+    margin-right: 5px;
+    color: inherit;
+    border: 0;
+    display: block;
+}
+
+#em a {
+    background-position: -368px -864px;
+}
+  
+#tw a {
+    background-position: -80px -0px;
+}
+
+.sm li#li a {
+    background-position: -272px -96px;
+}
+
+.sm li#gh a {
+    background-position: -272px -480px;
+}
+
+.sm li#mc a {
+    background-position: -176px -1248px;
+}
+
+.sm li#fl a {
+    background-position: -80px -192px;
+}
+
+.sm li#lf a {
+    background-position: -272px -192px;
+}
+
+.sm li#sc a {
+    background-position: -368px -384px;
+}
+
+.sm li#gr a {
+    background-position: -368px -96px;
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 950px; /* or 950px */
+}
+
+/* Blog specific stylings */
+li .like {
+    list-style: none;    
+}
+
+.footnotes:before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin: 20px 0 20px 0;
+    background: #FFFFFF;
+}
+
+h2{
+    padding-top:20px;
+}
+
+.title h2{
+    padding-top: 0px;
+}

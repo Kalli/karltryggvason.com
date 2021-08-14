@@ -1,0 +1,88 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial;
+}
+#map {
+    width: 100%; height:100%;
+    position:absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.panel {    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    z-index: 2;
+    position:relative;
+}
+
+.panel div{
+    padding-top: 20px;
+}
+
+.panel .center{
+    margin: auto 0px;
+}
+
+.label{
+    text-align:center;
+}
+.label div{
+    padding-top:5px;
+}
+
+#title {
+    text-align:center;
+    width: 75%;
+    left: 25%;
+    top: 0%;
+}
+
+#player {
+    position: absolute;
+    top: 15%;
+}
+
+#player div {
+    padding: 5px;
+}
+
+#sidebar {
+    position: absolute;
+    width: 25%;
+    height:100%;
+    font-size: 16px;
+    padding-top:0px;
+    padding-bottom:0px;
+}
+
+#loading {
+    position: absolute;
+    bottom: 50%;
+    right: 0%;
+    width: 75%;
+    font-size: 26px;
+    text-align: center;
+    z-index: 2;
+}
+
+#map img {
+    max-width: none;
+}
+
+.buslist{
+    list-style:none;
+    margin: 0 0 0px 0px;
+    padding-bottom:10px;
+}
+.buslist li{
+    display:inline-block;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0; 
+}

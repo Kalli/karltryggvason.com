@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>{{page.title}}</title>
+    {% if page.css %}
+        {{ page.css }}
+    {% endif %}
+    {% if page.script %}
+        {{ page.script }}
+    {% endif %}
+    {% if page.meta %}
+        {{ page.meta }}
+    {% endif %}
+    <meta name="description" content="{{page.description}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+    <div class="container-fullwidth">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="/">Karl Tryggvason</a>
+                <ul class="nav">
+                    <li><a href="http://blog.karltryggvason.com">Blog</a></li>
+                    <li><a href="http://podcast.karltryggvason.com">Podcast</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                {{content}}
+            </div><!--/span-->
+        </div><!--/row-->    
+        <hr />
+        <div class="sm">
+            <ul >
+                <li><a href="mailto:ktryggvason@gmail.com" title="Email me"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="http://www.twitter.com/karltryggvason" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="http://www.linkedin.com/karltryggvason" title="Linked in"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="http://www.github.com/kalli" title="Github"><i class="fab fa-github"></i></a></li>
+                <li><a href="http://www.mixcloud.com/kalli" title="Mixcloud"><i class="fab fa-mixcloud"></i></a></li>
+                <li><a href="http://www.last.fm/user/djkalli" title="Last.fm"><i class="fab fa-lastfm" ></i></a></li>
+                <li><a href="http://www.flickr.com/photos/kalli/" title="Flickr"><i class="fab fa-flickr" ></i></a></li>
+                <li><a href="http://www.soundcloud.com/kalli" title="SoundCloud"><i class="fab fa-soundcloud" ></i></a></li>
+                <li><a href="http://www.goodreads.com/user/show/678304-kalli" title="GoodReads"><i class="fab fa-goodreads-g" ></i></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+.mw{
+    height: 520px;
+    width: 270px;
+}
+
+.machine {
+    display: inline;
+    width: 448px;
+    height: 520px;
+    background: url('/img/tape/rw_demo_tape_background.png') no-repeat;
+}
+
+#machine1 {
+    position: absolute;
+}
+
+#machine2 {
+    position: absolute;
+    left: 496px;
+}
+
+.play {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 71px;
+    top: 378px;
+    z-index: 3;
+}
+
+.tapedeck{
+    z-index:1;
+}
+
+.play.on {
+    background: url('/img/tape/rw_demo_tape_stop.png') no-repeat;
+}
+
+.play.off {
+    background: url('/img/tape/rw_demo_tape_play.png') no-repeat;
+}
+
+.red.on {
+    background: url('/img/tape/rw_demo_tape_stop_red.png') no-repeat;
+}
+
+.red.off {
+    background: url('/img/tape/rw_demo_tape_play_red.png') no-repeat;
+}
+
+.speed {
+    position: relative;
+    width: 89px;
+    height: 85px;
+    left: 136px;
+    top: 368px;
+}
+
+.speed.normal {
+    background: url('/img/tape/rw_demo_tape_switch_02.png') no-repeat;
+}
+
+.speed.normal.red {
+    background: url('/img/tape/rw_demo_tape_switch_02_red.png') no-repeat;
+}
+
+.speed.half {
+    background: url('/img/tape/rw_demo_tape_switch_01.png') no-repeat;
+}
+
+.speed.half.red {
+    background: url('/img/tape/rw_demo_tape_switch_01_red.png') no-repeat;
+}
+
+.fine-speed {
+    position: relative;
+    cursor: ns-resize;
+    width: 82px;
+    height: 82px;
+    background: url('/img/tape/rw_demo_tape_rotary-knob.png') no-repeat;
+    left: 286px;
+    top: 280px;
+}
+
+.fine-speed.red {
+    position: relative;
+    cursor: ns-resize;
+    width: 82px;
+    height: 82px;
+    background: url('/img/tape/rw_demo_tape_rotary-knob_red.png') no-repeat;
+    left: 286px;
+    top: 280px;
+}
+
+.center{
+    text-align: center;
+    padding-top: 10px;
+}

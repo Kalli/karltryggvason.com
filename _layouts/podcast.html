@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<div class="hero-unit">
+
+<h2 class="center"> Kalli - {{ page.title }} </h2> 
+   
+<div>
+    <iframe class="mixcloud" width="480" height="480" src="//www.mixcloud.com/widget/iframe/?feed={{page.mixcloudlink | cgi_escape }}&stylecolor=&embed_type=widget_standard" frameborder="0"></iframe>
+</div>
+
+<p class="center">
+    <a href="{{page.mixcloudlink}}"> Stream on Mixcloud</a> | <a href="{{page.mp3link}}"> Download MP3 / Ná í MP3 </a>
+</p>
+    
+<p>Tracklist / lagalisti:</p>
+    
+    {{ content }}
+    
+<p>Thanks for listening / Takk fyrir að hlusta.</p>    
+</div>

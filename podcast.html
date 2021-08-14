@@ -1,0 +1,53 @@
+---
+layout: null
+permalink: /rss/podcast.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <atom:link rel="hub" href="http://www.karltryggvason.com" xmlns:atom="http://www.w3.org/2005/Atom" />
+        <title>Podcast - KarlTryggvason.com</title>
+        <generator>KarlTryggvason</generator>
+        <description></description>
+        <link>http://podcast.karltryggvason.com/</link>
+        <itunes:category text="Music">
+        </itunes:category>
+        <itunes:explicit>Yes</itunes:explicit>
+        <itunes:subtitle>Music and mixes from Karl Tryggvason</itunes:subtitle>
+        <itunes:author>Karl Tryggvason</itunes:author>
+        <itunes:owner>
+            <itunes:email>ktryggvason@gmail.com</itunes:email>
+            <itunes:name>Karl Tryggvason</itunes:name>
+        </itunes:owner>
+        <itunes:image>
+            <url>http://karltryggvason.com/img/thumbs/podcast.jpg</url>
+            <title>Podcast - KarlTryggvason.com</title>
+            <link>http://karltryggvason.com/</link>
+        </itunes:image>
+        
+        <link>http://podcast.karltryggvason.com/</link>
+        {% for post in site.posts %}
+        {% if post.layout == "podcast" %}
+        <item>
+            <title>{{post.title}}</title>
+            <description xml:space="preserve">
+                Kalli - {{post.title}}
+                
+                {{ post.overview | xml_escape}}
+            </description>
+            <content:encoded>
+                Kalli - {{post.title}}<br />
+                {{ post.overview | xml_escape}}<br />
+                Tracklist: <br />
+                {{ post.content }}
+            </content:encoded>
+            <guid>http://www.karltryggvason.com{{ post.url }}</guid>
+            <link>http://www.karltryggvason.com{{ post.url }}</link>
+            <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S GMT" }}</pubDate>
+            <itunes:image href="http://www.karltryggvason.com{{ post.thumb }}" />
+            <enclosure url="{{ post.mp3link }}" length="{{ post.length }}" type="audio/mpeg" />
+        </item>
+        {% endif %}
+        {% endfor %}
+    </channel>
+</rss>

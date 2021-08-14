@@ -1,0 +1,34 @@
+{
+  "name": "bootstrap-slider",
+  "main": [
+    "bootstrap-slider.js",
+    "slider.css"
+  ],
+  "version": "0.0.0",
+  "homepage": "https://github.com/pammacdotnet/bootstrap-slider",
+  "authors": [
+    "pammacdotnet"
+  ],
+  "description": "Eyecon Slider for Bootstrap",
+  "keywords": [
+    "slider",
+    "bootstrap"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "gitHead": "879a98dcd0923107363861e56423f3cc1c2472e7",
+  "readme": "Bootstrap Slider\n=============\n\nFork of eyecon's [bootstrap-slider](http://www.eyecon.ro/bootstrap-slider/).\n\nSpecially remastered for iLIME Project @ UNIR Research. More info: \n[http://blogs.unir.net/elearning/telsock-research-group/](http://)\n\n![ScreenShot](https://raw.github.com/pammacdotnet/bootstrap-slider/master/locks.png)\n\nChanges\n----------\nCurrent changes include:\n\n+ Better responsive support\n+ Updated look and feel\n+ Minor layout tweaks\n+ Removed built-in handle types\n+ Bower install\n+ Limits and locks \n\n\n\t\n\n\n\n",
+  "readmeFilename": "README.md",
+  "_id": "bootstrap-slider@2.0.0",
+  "commit": "879a98dcd0923107363861e56423f3cc1c2472e7",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pammacdotnet/bootstrap-slider"
+  }
+}

@@ -1,0 +1,6 @@
+_site/
+.jekyll-cache/*
+.DS_Store
+karltryggvason.com.sublime-project
+
+karltryggvason.com.sublime-workspace
