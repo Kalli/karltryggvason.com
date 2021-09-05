@@ -229,3 +229,7 @@ h2{
 .title h2{
     padding-top: 0px;
 }
+
+figcaption{
+    text-align: center;
+}
