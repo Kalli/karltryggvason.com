@@ -3,7 +3,7 @@ layout: podcast
 title: Your Mileage May Vary
 thumb: /img/thumbs/podcast/your-mileage-may-vary.jpg
 overview: Allskonar ýmislegt
-mp3link: http://www.karltryggvason.com/mp3/kalli_-_Your_Mileage_May_Vary.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_Your_Mileage_May_Vary.mp3
 mixcloudlink: https://www.mixcloud.com/kalli/your-mileage-may-vary/
 permalink: /podcast/your-mileage-may-vary
 tags: [soundtrack, disco, house, soul, jazz]

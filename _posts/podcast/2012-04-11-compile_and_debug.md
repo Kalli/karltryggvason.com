@@ -3,7 +3,7 @@ layout: podcast
 title: Compile and Debug
 thumb: /img/thumbs/podcast/compile_and_debug.jpg
 overview: Bass music in various guises and at various tempos.
-mp3link: http://www.karltryggvason.com/mp3/kalli_-_compile_and_debug.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_compile_and_debug.mp3
 mixcloudlink: http://www.mixcloud.com/kalli/compile-debug/
 permalink: /podcast/compile-and-debug
 tags: [jungle, juke, post-dubstep, dubstep, grime]

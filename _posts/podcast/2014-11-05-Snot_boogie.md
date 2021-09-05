@@ -4,7 +4,7 @@ title: Snot Boogie
 json: false
 thumb: /img/thumbs/podcast/snotboogie.jpg
 overview: Mucus music for the autumn of 2014.
-mp3link: http://www.karltryggvason.com/mp3/Kalli_-_Snot_Boogie.mp3
+mp3link: http://media.karltryggvason.com/mp3/Kalli_-_Snot_Boogie.mp3
 mixcloudlink: http://www.mixcloud.com/kalli/snot-boogie/
 permalink: /podcast/snot-boogie
 tags: [disco, funk, house, techno]

@@ -3,7 +3,7 @@ layout: podcast
 title: Snekkersten Slow Jams
 thumb: /img/thumbs/podcast/snekkersten_slow_jams.jpg
 overview: Some slow house jams
-mp3link: http://www.karltryggvason.com/mp3/kalli_-_Snekkersten_Slow_Jams.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_Snekkersten_Slow_Jams.mp3
 mixcloudlink: http://www.mixcloud.com/kalli/snekkersten-slow-jams/
 permalink: /podcast/snekkersten-slow-jams
 tags: [slow house jams]

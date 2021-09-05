@@ -3,7 +3,7 @@ layout: podcast
 title: Hafarnar Mix
 thumb: /img/thumbs/podcast/hafarnarmix.jpg
 overview: Hip hop mix for the icelandic rap radio show Haförninn
-mp3link: http://www.karltryggvason.com/mp3/kalli_-_hafarnar_mix.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_hafarnar_mix.mp3
 mixcloudlink: http://www.mixcloud.com/kalli/hafarnar-mix/
 permalink: /podcast/hafarnar-mix/
 tags: [hip hop, rap, grime]

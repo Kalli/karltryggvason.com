@@ -3,7 +3,7 @@ layout: podcast
 title: Red Light Radio
 thumb: /img/thumbs/podcast/redlight-radio.jpg
 overview: A show I did on Amsterdam's Red Light Radio in November 2016.
-mp3link: http://karltryggvason.com/mp3/kalli_-_Red_Light_Radio_2016-11-10.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_Red_Light_Radio_2016-11-10.mp3
 mixcloudlink: https://www.mixcloud.com/RedLightRadio/karl-tryggvason-red-light-radio-11-10-2016/
 permalink: podcast/red-light-radio/
 tags: [house, techno, dancehall, radio]

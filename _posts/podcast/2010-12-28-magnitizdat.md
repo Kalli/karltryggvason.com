@@ -3,7 +3,7 @@ layout: podcast
 title: Magnitizdat
 thumb: /img/thumbs/podcast/magnitizdat.jpg
 overview: House, grime and garage.
-mp3link: http://www.karltryggvason.com/mp3/Kalli_-_Magnitizdat.mp3
+mp3link: http://media.karltryggvason.com/mp3/Kalli_-_Magnitizdat.mp3
 mixcloudlink: http://www.mixcloud.com/kalli/magnitizdat/
 permalink: /podcast/magnitizdat
 tags: [uk funky, house, garage]

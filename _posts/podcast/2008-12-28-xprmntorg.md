@@ -3,7 +3,7 @@ layout: podcast
 title: Xprmntorg
 thumb: /img/thumbs/podcast/xprmntorg.jpg
 overview: A dubby mix made for the now defunct website experement.org
-mp3link: http://www.karltryggvason.com/mp3/kalli_-_xprmntorg.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_xprmntorg.mp3
 mixcloudlink: http://www.mixcloud.com/kalli/xprmntorg/
 permalink: /podcast/xprmntorg/
 tags: [dub techno, dubstep, dubby house]

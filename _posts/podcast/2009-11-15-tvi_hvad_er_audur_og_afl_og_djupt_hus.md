@@ -3,7 +3,7 @@ layout: podcast
 title: Því hvað er auður og afl og djúpt hús
 thumb: /img/thumbs/podcast/audur_og_afl.jpg
 overview: House, house, house and more house.
-mp3link: http://www.karltryggvason.com/mp3/kalli_-_hvad_er_audur.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_hvad_er_audur.mp3
 mixcloudlink: http://www.mixcloud.com/kalli/vi-hva-er-auur-og-afl-og-djupt-hus/
 permalink: /podcast/tvi-hvad-er-audur-og-afl-og-djupt-hus
 tags: [house, techno, deep house]

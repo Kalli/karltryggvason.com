@@ -3,7 +3,7 @@ layout: podcast
 title: Triangulate
 thumb: /img/thumbs/podcast/triangulate.jpg
 overview: From 130 to 140 bpm.
-mp3link: http://www.karltryggvason.com/mp3/kalli_-_triangulate.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_triangulate.mp3
 mixcloudlink: http://www.mixcloud.com/kalli/bloc-make-music-2010-competition-mix/
 permalink: /podcast/triangulate
 tags: [dubstep, grime, techno]

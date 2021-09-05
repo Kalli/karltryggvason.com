@@ -3,7 +3,7 @@ layout: podcast
 title: Downtempo Concept Mix
 thumb: /img/thumbs/podcast/concept.jpg
 overview: Hip hop and downtempo tunes by drum and bass producers made back in 2007.
-mp3link: http://www.karltryggvason.com/mp3/kalli_-_July_Concept_Mix.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_July_Concept_Mix.mp3
 mixcloudlink: http://www.mixcloud.com/kalli/downtempo-concept-mix/
 permalink: /podcast/concept
 tags: [hip hop, downtempo, concept]

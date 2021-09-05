@@ -3,7 +3,7 @@ layout: podcast
 title: NTS Radio February 2015
 thumb: /img/thumbs/podcast/nts.jpg
 overview: A show I did on London's NTS radio in February 2015.
-mp3link: http://www.karltryggvason.com/mp3/kalli_-_NTS_february_2015.mp3
+mp3link: http://media.karltryggvason.com/mp3/kalli_-_NTS_february_2015.mp3
 mixcloudlink: https://www.mixcloud.com/NTSRadio/karl-tryggvason-13th-february-2015/
 permalink: /podcast/nts-february-2015
 tags: [eclectic, radio show]
