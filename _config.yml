@@ -11,7 +11,7 @@ future:      true
 lsi:         false
 highlighter:    null
 markdown:    kramdown
-permalink:   /:title
+permalink:   /:title/
 
 exclude: [/coffeescript/,/localdev.sh]
 
