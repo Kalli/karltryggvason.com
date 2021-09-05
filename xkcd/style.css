@@ -1,0 +1,387 @@
+/* START GENERAL FORMAT */
+body{
+    background-color:#96A8C8;
+    text-align:center;
+    font-size:16px;
+    font-variant:small-caps;
+    font-family:Lucida,Helvetica,sans-serif;
+    font-weight:500;
+    text-decoration: none;
+    position: absolute;
+    left: 50%;
+    width: 780px;
+    margin-left: -390px;
+}
+a{
+    color:#96A8C8;
+    text-decoration:none;
+    font-weight:800
+}
+a:hover{
+    text-decoration:underline
+}
+img{
+    border:0
+}
+.box { /*any of the box layouts & white backgrounds*/
+    background:white;
+    border-style:solid;
+    border-width:1.5px;
+    border-color:#071419;
+    border-radius: 12px;
+    -moz-border-radius: 12px;
+}
+/* END GENERAL FORMAT */
+/* START UPPER LAYOUT */
+#topContainer{ 
+    width:780px;
+    position:relative;
+    overflow:hidden;
+}
+#topLeft{
+    width:166px;
+    float:left;
+    position:relative;
+    text-align:left;
+    padding: 17px;
+}
+#topLeft ul {
+    margin: 0;
+    list-style-type: none;
+}
+#topLeft a {
+    color: #282B30;
+    font-size: 21px;
+    font-weight: 800;
+}
+#topLeft a:hover {
+    text-decoration: underline;
+}
+#bgLeft {
+    float: left;
+    left:0;
+    width: 200px;
+    bottom:0;
+    top: 0px;
+}
+#topRight {
+    width:560px;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:15px;
+    float:right;
+    position:relative;
+    text-align:left;
+    line-height: 150%;
+}
+#masthead {
+    display: block;
+}
+#slogan {
+        padding: 20px;
+    display: inline-block;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 120%;
+    vertical-align: top;
+}   
+#bgRight {
+    right: 0;
+    float: right;
+    width: 572px;
+    bottom:0;
+    top: 0px;
+}
+.bg { /* necessary for positioning box layouts  for bg */
+    position:absolute;
+    z-index:-1;
+}
+/* END UPPER LAYOUT */
+
+/*START MIDDLE */
+#middleContainer {
+    width:780px;
+    margin: 5px  auto;
+    padding: 10px 0;
+}
+
+#ctitle {
+    margin: 10px;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+ul.comicNav {
+    padding:0;
+    list-style-type:none;
+}
+ul.comicNav li {
+    display: inline;
+}
+
+ul.comicNav  li a {
+    /*background-color: #6E6E6E;*/
+    background-color:#6E7B91;
+    color: #FFF;
+    border: 1.5px solid #333;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 1.5px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0 0 5px 0 gray;
+    -moz-box-shadow: 0 0 5px 0 gray;
+    -webkit-box-shadow: 0 0 5px 0 gray; 
+}
+
+
+ul.comicNav a:hover, ul.comicNav a:focus {
+    background-color: #FFF;
+    color: #6E7B91;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.comicInfo {
+    font-size:12px;
+    font-style:italic;
+    font-weight:800;
+}
+#bottom {
+    margin-top:5px;
+    padding:25px 15px;
+    width:750px;
+}
+#comicLinks {
+    display: block;
+    margin: auto;
+    width: 300px;
+}
+#footnote {
+    clear: both;
+    font-size: 6px;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: 800;
+    margin: 0;
+    padding: 0;
+}
+#licenseText {
+    display: block;
+    margin: auto;
+    width: 410px;
+}
+
+#transcript {display: none;}
+
+#middleContainer { position:relative; left:50%; margin-left:-390px; }
+#comic .comic { position:absolute; }
+#comic .panel, #comic .cover, #comic .panel img { position:absolute; }
+#comic .cover { z-index:10; }
+#comic table { margin: auto; }
+
+@font-face {
+  font-family: 'xkcd-Regular';
+  src: url('/xkcd-Regular.otf') format('opentype');
+}
+
+.overlay{
+    position: absolute; 
+    text-align: left;
+    font-family: xkcd-Regular; 
+    font-size: 15px; 
+    color: rgb(0, 0, 0); 
+    overflow: hidden;
+}
+
+#guy{
+    top: 15px; 
+    left: 150px; 
+    height: 108px; 
+    width: 350px; 
+}
+#girl{
+    top: 80px;
+    left: 290px;
+    height: 108px;
+    width: 240px;
+}
+
+@font-face {
+    font-family: 'xkcd-Regular';
+    src: url('xkcd-Regular.eot?') format('eot'), url('xkcd-Regular.otf') format('opentype')
+}
+
+.text{
+    font-family: xkcd-Regular; 
+    font-size: 15px; 
+    color: rgb(0, 0, 0); 
+    overflow: hidden;
+}
+
+#comic {
+    width: 660px;
+    margin: 0 auto;
+}
+
+.bernardo-comic {
+    position: relative;
+    font-family: 'xkcd-Regular';
+    font-variant: normal;
+    color: #242424;
+    text-align: center;
+}
+
+.bernardo-comic .panel {
+    display: inline-block;
+    opacity: 0;
+    -webkit-transform: translate(-20px, 0);
+    -moz-transform: translate(-20px, 0);
+    -o-transform: translate(-20px, 0);
+    -ms-transform: translate(-20px, 0);
+    transform: translate(-20px, 0)
+}
+
+.bernardo-comic .panel.animate {
+    transition: all .25s
+}
+
+.bernardo-comic .panel.showing {
+    opacity: 1;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none
+}
+
+.bernardo-comic .panel .option-placeholder {
+    background: #ddd;
+    border-radius: 5px
+}
+
+.bernardo-comic .options.showing {
+    opacity: 1;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none
+}
+
+.bernardo-comic .options:before,
+.bernardo-comic .options:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    top: -16px;
+    left: 50%;
+    margin-left: -4px
+}
+
+.bernardo-comic .options:before {
+    border-bottom-color: #666;
+    margin-top: -2px
+}
+
+.bernardo-comic .options:after {
+    border-bottom-color: #ddd
+}
+
+.bernardo-comic .options li {
+    list-style-type: none;
+    clear: both;
+    padding: 3px 7px;
+    padding-left: 32px;
+    cursor: pointer;
+    overflow: hidden
+}
+
+.bernardo-comic .options li:hover,
+.bernardo-comic .options:not(:hover) li.focus {
+    background: #eee
+}
+
+.bernardo-comic .options .option-choose {
+    position: absolute;
+    left: 5px;
+    margin: 0;
+    background: #fafafa;
+    color: #777;
+    border: 1px solid #777;
+    border-radius: 3px;
+    margin-right: 7px;
+    padding: 1px 0;
+    min-width: 18px;
+    cursor: pointer
+}
+
+.bernardo-comic .options .option-choose:focus {
+    outline: none
+}
+
+.bernardo-comic .options .option-writein-box {
+    display: block;
+    overflow: hidden
+}
+
+.bernardo-comic .options .option-writein {
+    margin: 0;
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #777
+}
+
+.bernardo-comic .options .option-writein:focus {
+    outline: none
+}
+
+.bernardo-comic .options.final {
+    font-size: .85em;
+    text-align: center;
+}
+
+.bernardo-comic .options.final:before,
+.bernardo-comic .options.final:after {
+    display: none
+}
+
+.bernardo-comic .options.final .option-choose {
+    opacity: 0
+}
+
+.bernardo-comic .options.final .option-line {
+    padding-left: 7px
+}
+
+.bernardo-comic .rollback,
+.bernardo-comic .permalink {
+    margin: 0;
+    font-family: xkcd-Regular;
+    color: black;
+    background: #ddd;
+    border: 2px solid #666;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 200
+}
+
+
+
+.bernardo-comic:hover .permalink {
+    opacity: .5
+}
+
+.bernardo-comic:hover .permalink:hover {
+    opacity: 1;
+    transition-delay: 0;
+}
