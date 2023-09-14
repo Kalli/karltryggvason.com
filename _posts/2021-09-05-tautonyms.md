@@ -18,16 +18,17 @@ I want to see as many animals with tautonymic names as possible. Below is the li
 
 * [Anser anser](https://en.wikipedia.org/wiki/Greylag_goose) - the greylag goose - 16.07.2020, Alphen aan den Rijn, The Netherlands.    
 * [Capreolus capreolus](https://en.wikipedia.org/wiki/Roe_deer) - Western roe deer - 08.07.2021, Dyrehaven, Denmark.
+* [Carduelis carduelis](https://en.wikipedia.org/wiki/European_goldfinch)- The European goldfinch - 16.06.2023
 * [Ciconia ciconia](https://en.wikipedia.org/wiki/White_stork) - the white stork - 17.07.2020, Rijpwetering, The Netherlands.
 * [Gallinago gallinago](https://en.wikipedia.org/wiki/Common_snipe) - the common snipe - 23.06.2019, Fellsmörk, Iceland (my favourite bird!)
+* [Pyrrhula pyrhulla](https://en.wikipedia.org/wiki/Eurasian_bullfinch) - Eurasian bullfinch - 02.04.2023.
+* [Vulpes vulpes](https://en.wikipedia.org/wiki/Red_fox) - the red fox.
 
 Then there are a few that I've definitely seen in the (semi)-wild but either it was before I started keeping track or it was without evidence or documentation: 
 
-* [Vulpes vulpes](https://en.wikipedia.org/wiki/Red_fox) - the red fox.
 * [Rattus rattus](https://en.wikipedia.org/wiki/Black_rat) - the black rat.
 * [Apus apus](https://en.wikipedia.org/wiki/Common_swift) - the common swift.
 * [Bufo bufo](https://en.wikipedia.org/wiki/Common_toad) - the common toad (not to be confused with Ben UFO aka BUFO one of my favourite dj's who I've also seen in the wild).
-* [Carduelis carduelis](https://en.wikipedia.org/wiki/European_goldfinch)- The European goldfinch.
 
 Domestic animals or animals seen in captivity don't count towards my list.
 
