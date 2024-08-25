@@ -97,7 +97,8 @@ body{
 @media only screen and (min-device-width: 992px){
 
     .project:hover .info {
-        display: block;
+        display: flex;
+        align-items: center;
     }
     .hero-unit{
         padding: 30px 60px 30px 60px;
