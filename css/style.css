@@ -119,14 +119,15 @@ body{
     height: 100%;
     width: 100%;
     overflow: hidden;
-    opacity: 0.8;
+    opacity: 0.90;
     z-index: 2;
-    background-image: url("/img/background/creampaper.png"); 
+    background-image: url("/img/background/creampaper.png");
 }
 
 .info p {
   padding: 15% 15% 15% 15%;
-  font-size: 22px; 
+  font-size: 22px;
+  font-weight: lighter;
   color: #333; 
 }
 
