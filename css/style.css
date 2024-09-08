@@ -68,7 +68,7 @@ body{
     padding-bottom: 20px;
 }
 
-@media only screen and (min-device-width: 220px){
+@media only screen and (min-width: 220px){
     .hero-unit{
         padding: 10px 20px 10px 20px ;
     }
@@ -81,7 +81,7 @@ body{
     }
 }
 
-@media only screen and (min-device-width: 600px){
+@media only screen and (min-width: 600px){
     .hero-unit{
         padding: 30px 60px 30px 60px;
     }
@@ -94,8 +94,10 @@ body{
     }
 }
 
-@media only screen and (min-device-width: 992px){
-
+@media only screen and (min-width: 768px){
+    .mobile-info {
+        display: none !important;
+    }
     .project:hover .info {
         display: flex;
         align-items: center;
@@ -125,7 +127,7 @@ body{
 }
 
 .info p {
-  padding: 15% 15% 15% 15%;
+  padding: 10% 10% 10% 10%;
   font-size: 22px;
   font-weight: lighter;
   color: #333; 
