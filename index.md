@@ -5,7 +5,7 @@ title: Karl Tryggvason - Troublemaker / Problem Solver
 
 <div class="hero-unit" markdown="1">
 
-Hey there! My name is Karl Tryggvason, I'm  a software developer, dj and music enthusiast. I'm born and bred in Iceland, but currently reside in Oslo, Norway. Below you can find some things I've worked on. 
+Hey there! My name is Karl Tryggvason, I'm  a software developer, runner, dj and music enthusiast. I'm born and bred in Iceland, but currently reside in Oslo, Norway. Below you can find some things I've worked on and thought about.
 
 </div>
 
