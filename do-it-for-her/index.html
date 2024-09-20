@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Do it for her - De-motivational Plague Generator</title>
+    <meta property="og:image" content="http://www.karltryggvason.com/do-it-for-her/dont-forget-youre-here-forever.jpg" />
+    <meta property="og:title" content="Do it for her - De-motivational Plague Generator">
+    <meta property="og:description" content="Don't forget you're here forever.">
+    <meta property="og:url" content="https://karltryggvason.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Do it for her - De-motivational Plague Generator">
+    <meta name="twitter:description" content="Don't forget you're here forever.">
+    <meta name="twitter:image" content="http://www.karltryggvason.com/do-it-for-her/dont-forget-youre-here-forever.jpg">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+    <div id="canvas-container" class="canvas-container">
+        <canvas id="canvas" width="" height="">
+        </canvas>
+        <div class="input-div" id="input1">
+            <input type="file" id="imageInput1"/>
+            <label for="imageInput1" class="input-label">SELECT IMAGE(S)</label>
+        </div>
+        <div class="input-div" id="input2">
+            <input type="file" id="imageInput2"/>
+            <label for="imageInput2" class="input-label">SELECT IMAGE(S)</label>
+        </div>
+        <div class="input-div" id="input3">
+            <input type="file" id="imageInput3"/>
+            <label for="imageInput3" class="input-label">SELECT IMAGE(S)</label>
+        </div>
+        <div class="input-div" id="input4">
+            <input type="file" id="imageInput4"/>
+            <label for="imageInput4" class="input-label">SELECT IMAGE(S)</label>
+        </div>
+        <div class="input-div" id="input5">
+            <input type="file" id="imageInput5"/>
+            <label for="imageInput5" class="input-label">SELECT IMAGE(S)</label>
+        </div>
+        <div class="input-div" id="input6">
+            <input type="file" id="imageInput6"/>
+            <label for="imageInput6" class="input-label">SELECT IMAGE(S)</label>
+        </div>
+        <div class="input-div" id="input7">
+            <input type="file" id="imageInput7"/>
+            <label for="imageInput7" class="input-label">SELECT IMAGE(S)</label>
+        </div>
+    </div>
+    <div class="row">
+        <button id="download-button">
+            <a href="#" id="download" title="Uh sir, that's the 'plaque'">
+                DOWNLOAD SPECIAL DE-MOTIVATIONAL PLAGUE
+            </a>
+        </button>
+    </div>
+    <div id="landscape-prompt">Please turn your device to landscape orientation.</div>
+</body>
+<style>
+    @font-face {
+        font-family: "Akbar";
+        src: url("./akbar.ttf");
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+        background-color: #6570AB;
+    }
+
+    .canvas-container{
+        display: flex;
+        align-items: stretch;
+        min-width: 0;
+        min-height: 0;
+        align-content: center;
+        position: relative;
+        margin: 40px;
+        width: 100%;
+        aspect-ratio: 1.8 / 1;
+    }
+
+    canvas {
+        width: 100%;
+        aspect-ratio: 1.8 / 1;
+        max-width: 100%;
+        height: auto;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .row {
+        flex-grow: 1;
+        width: auto;
+        align-self: stretch;
+        text-align: center;
+    }
+
+    a {
+        font-size: 10px;
+        font-family: "Akbar";
+    }
+
+    .input-label, #download-button {
+        font-size: 10px;
+        font-family: "Akbar";
+        color: #000000;
+        text-align: center;
+        border: 1px #000000 solid;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: #A87143;
+        margin-bottom: 20px;
+    }
+
+    #download-button a{
+        padding: 5px;
+        text-decoration: none;
+        color: #000000 !important;
+    }
+
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    .input-div {
+        position: absolute;
+        display: flex;
+        z-index: 2;
+        background-color: #6570AB;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        opacity: 0;
+        animation: fadeIn 7s forwards;
+    }
+
+    input {
+        display: none;
+    }
+
+    .input-label{
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+
+    .input-label:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #input1{
+        top: 21%;
+        left: 23%;
+        width: 4.6%;
+        height: 12.4%;
+    }
+
+    #input1 .input-label, #input2 .input-label {
+        max-width: 80%;
+        font-size: 7px;
+    }
+
+    #input2{
+        top: 16%;
+        left: 29.4%;
+        width: 4.3%;
+        height: 10%;
+    }
+    #input3{
+        top: 10%;
+        left: 67%;
+        width: 16%;
+        height: 25%;
+        z-index: 2;
+    }
+    #input4{
+        top: 12%;
+        left: 80%;
+        width: 19%;
+        height: 47%;
+        z-index: 1;
+    }
+    #input5{
+        top: 45%;
+        left: 11%;
+        width: 27%;
+        height: 38%;
+        z-index: 2;
+    }
+    #input6{
+        top: 44%;
+        left: 36%;
+        width: 15%;
+        height: 18%;
+        z-index: 1;
+    }
+    #input7{
+        top: 59%;
+        left: 38%;
+        width: 41%;
+        height: 35%;
+        z-index: 3;
+    }
+
+    .resize-container {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        cursor: move;
+        margin: 0 auto;
+
+    }
+
+
+    .resize-container img {
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .resize-handle {
+        position: absolute;
+        z-index: 999;
+        bottom: -15px;
+        right: -15px;
+        cursor: se-resize;
+        text-decoration: none;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 50%;
+        cursor: nwse-resize;
+        font-size: 24px;
+    }
+
+    .close-handle {
+        position: absolute;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: bold;
+        top: -15px;
+        right: -15px;
+    }
+    .close-handle::before, .close-handle::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60%;
+        height: 2px;
+        background-color: white;
+        transform-origin: center;
+    }
+    .close-handle::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .close-handle::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    /* smaller screens */
+    @media (max-width: 1200px) {
+        body {
+            overflow: scroll;
+        }
+        .canvas-container {
+            touch-action: pan-x pan-y pinch-zoom;
+        }
+
+        /* Style for the landscape prompt overlay */
+        #landscape-prompt {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #6570AB;
+            opacity: 80%;
+            font-size: 20px;
+            font-family: "Akbar";
+            color: white;
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1000; /* Ensure it's on top of other content */
+        }
+
+        #input1 .input-label, #input2 .input-label {
+            max-width: 70%;
+            font-size: 5px;
+        }
+
+        /* Optional: Style for devices that don't support orientation change */
+        @media (orientation: landscape) {
+            #landscape-prompt {
+                display: none !important; /* Force hide on landscape */
+            }
+        }
+    }
+
+</style>
+<script type="text/javascript" src="main.js"></script>
+</html>
