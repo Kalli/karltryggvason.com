@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Strava Jockey | Create real fake Strava runs</title>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Strava Jockey | Create real fake Strava runs<</title>
+    <meta name="description" content="Can't run fast or long enough? Create a fake run to impress people that won't care.">
+    <meta name="author" content="Karl Tryggvason">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.karltryggvason.com/digital-strava-jockey.com">
+    <meta property="og:title" content="Digital Strava Jockey | Create real fake Strava runs">
+    <meta property="og:description" content="Can't run fast or long enough? Create a fake run to impress people that won't care.">
+    <meta property="og:image" content="https://www.karltryggvason.com/digital-strava-jockey.com/digital-strava-jockey.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.karltryggvason.com/digital-strava-jockey">
+    <meta property="twitter:title" content="Digital Strava Jockey | Create real fake Strava runs">
+    <meta property="twitter:description" content="Can't run fast or long enough? Create a fake run to impress people that won't care.">
+    <meta property="twitter:image" content="https://www.karltryggvason.com/digital-strava-jockey.com/digital-strava-jockey.png">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0044cc">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #result, #adjustedResult {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        input[type="number"], button {
+            margin-top: 10px;
+        }
+        div{
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Digital Strava Jockey</h1>
+    <hr>
+    <p>Upload a GPX file of your run and make it faster!</p>
+    <input type="file" id="gpxFile" accept=".gpx"  >
+    <div id="result"></div>
+    <input type="number" id="percentageFaster" min="0" max="100" value="0" step="1">
+    <label for="percentageFaster">% Faster</label>
+    <button id="calculateNewTime">Calculate New Time</button>
+    <div id="adjustedResult"></div>
+    <a id="downloadLink" style="display: none;">Download Adjusted GPX</a>
+    
+    <script>
+        let gpxContent;
+        let totalDistance = 0;
+        let originalDuration;
+        
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius of the Earth in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+        
+        function calculatePace(durationInMilliseconds, distanceInKm) {
+            const paceInMinutesPerKm = durationInMilliseconds / (distanceInKm * 60000);
+            const paceMinutes = Math.floor(paceInMinutesPerKm);
+            const paceSeconds = Math.round((paceInMinutesPerKm - paceMinutes) * 60);
+            return `${paceMinutes}:${paceSeconds.toString().padStart(2, '0')} min/km`;
+        }
+        
+        document.getElementById('gpxFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                gpxContent = e.target.result;
+                const parser = new DOMParser();
+                const gpx = parser.parseFromString(gpxContent, 'text/xml');
+                const points = gpx.getElementsByTagName('trkpt');
+                
+                totalDistance = 0;
+                let startTime, endTime;
+                
+                for (let i = 0; i < points.length - 1; i++) {
+                    const lat1 = parseFloat(points[i].getAttribute('lat'));
+                    const lon1 = parseFloat(points[i].getAttribute('lon'));
+                    const lat2 = parseFloat(points[i+1].getAttribute('lat'));
+                    const lon2 = parseFloat(points[i+1].getAttribute('lon'));
+                    
+                    totalDistance += calculateDistance(lat1, lon1, lat2, lon2);
+                    
+                    if (i === 0) {
+                        startTime = moment(points[i].getElementsByTagName('time')[0].textContent);
+                    }
+                    if (i === points.length - 2) {
+                        endTime = moment(points[i+1].getElementsByTagName('time')[0].textContent);
+                    }
+                }
+                
+                originalDuration = moment.duration(endTime.diff(startTime));
+                const hours = Math.floor(originalDuration.asHours());
+                const minutes = originalDuration.minutes();
+                const pace = calculatePace(originalDuration.asMilliseconds(), totalDistance);
+                
+                document.getElementById('result').innerHTML = `
+                    Total Distance: ${totalDistance.toFixed(2)} km<br>
+                    Original Duration: ${hours} hours and ${minutes} minutes<br>
+                    Original Pace: ${pace}
+                `;
+            };
+            
+            reader.readAsText(file);
+        });
+        
+        document.getElementById('calculateNewTime').addEventListener('click', function() {
+            if (!gpxContent) {
+                alert('Please upload a GPX file first.');
+                return;
+            }
+            
+            const percentageFaster = parseFloat(document.getElementById('percentageFaster').value);
+            const speedIncrease = 1 / (1 - percentageFaster / 100);
+            
+            const parser = new DOMParser();
+            const gpx = parser.parseFromString(gpxContent, 'text/xml');
+            const points = gpx.getElementsByTagName('trkpt');
+            
+            const startTime = moment(points[0].getElementsByTagName('time')[0].textContent);
+            const newDuration = moment.duration(originalDuration.asMilliseconds() / speedIncrease);
+            
+            for (let i = 1; i < points.length; i++) {
+                const originalTime = moment(points[i].getElementsByTagName('time')[0].textContent);
+                const timeDiff = moment.duration(originalTime.diff(startTime));
+                const newTimeDiff = moment.duration(timeDiff.asMilliseconds() / speedIncrease);
+                const newTime = moment(startTime).add(newTimeDiff);
+                points[i].getElementsByTagName('time')[0].textContent = newTime.toISOString();
+            }
+            
+            const newHours = Math.floor(newDuration.asHours());
+            const newMinutes = newDuration.minutes();
+            const newPace = calculatePace(newDuration.asMilliseconds(), totalDistance);
+            
+            document.getElementById('adjustedResult').innerHTML = `
+                New Duration: ${newHours} hours and ${newMinutes} minutes<br>
+                New Pace: ${newPace}
+            `;
+            
+            // Prepare download content
+            const serializer = new XMLSerializer();
+            const adjustedGpxContent = serializer.serializeToString(gpx);
+            
+            // Create blob and URL for download
+            const blob = new Blob([adjustedGpxContent], {type: 'application/gpx+xml'});
+            const url = URL.createObjectURL(blob);
+            
+            // Update download link
+            const downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = url;
+            downloadLink.download = 'adjusted_route.gpx';
+            downloadLink.style.display = 'inline';
+            
+            // Clean up the URL object when the download is complete
+            downloadLink.onclick = function() {
+                setTimeout(() => {
+                    URL.revokeObjectURL(url);
+                }, 100);
+            };
+        });
+    </script>
+    <hr>
+    <div>
+        <h2>What is this?</h2>
+        <p>
+            Recently, there's been a slate of news items about runners offering their services as <a href="https://duckduckgo.com/?q=strava+jokeys" target="_blank"><i>"Strava Jockeys"</i> or <i>"Strava Mules"</i></a>. For a fee, these "<i>jockeys</i>" will supposedly go on a run and upload their running data to the Strava profiles of their clients. The clients then have higher weekly mileages and improved stats to impress their friends (or to try to keep up with them).
+        </p>
+
+        <p>
+        I believe that this "trend" is likely to be wholly or predominantly made up:
+        </p>
+        
+        <ol>
+            <li>
+                Other runners do not care nearly as much about your Strava stats as you think they do. We all know this.
+            </li>
+            <li>
+                On the odd chance that some of them do care enough to notice, wouldn't they also notice that you suddenly have the heart rate of a 24-year-old, that your running abruptly became 30% faster, or that your cadence has changed significantly?
+            </li>
+            <li>
+                Runners caught using a <i>Strava Jockey</i> would face significant scorn from the community, whereas the boost if you use one and aren't caught is likely to be minimal.
+            </li>
+        </ol>
+        
+        <p>
+            In short, I think the incentives for using such a service are wrong; the upside just isn't likely to be worth paying for it. So why do I think that this trend has made news around the world you might ask?
+        </p>
+        
+        <ol>
+            <li>
+                People like reading outrageous things about other people and thinking that these other people are lazy and have bad morals. Especially when these changes are caused by technology (<i>O tempora, o mores!</i>).
+            </li>
+            <li>
+                News sites like publishing articles like this because they get a lot of attention and clicks.
+            </li>
+            <li>
+                The supposed <i>Strava Jockeys</i>, I imagine, are just people who like to get attention and/or are just trolling.
+            </li>
+        </ol>
+        
+        <p>
+            Well I too like attention, but I also know how to code! So above is my <i>Digital Strava Jockey</i> that I hope can <i>disrupt</i> its human counterparts. It is very simple and free to use: 
+        </p>
+        
+        <ol>
+
+            <li>
+            Select one of your runs on Strava. On the map click to "<i>download GPX</i>". Then delete the run.
+            </li>
+
+            <li>
+                Upload the GPX file into the form above. 
+            </li>
+            <li>
+                Select how much faster you want to be in percentages and click "<i>Calculate New Time</i>"
+            </li>
+
+            <li>
+                Download the adjusted GPX file.
+            </li>
+
+            <li>
+                <a href="https://www.strava.com/upload/select" target="_blank">Upload the file to Strava</a> and reap all the kudos and CRs that might come with it.
+            </li>
+        </ol>
+      
+        <p>
+            Contact me for premium features such as: <i>automatic BQ times</i> and <i>local legend automator</i>, available for a small fee.
+            All joking aside: know that you are pretty dodgy if you actually use this tool! You are eroding the trust of the community and possibly violating the Strava ToS, I hope you get caught! 
+        </p>
+
+        <hr>
+
+        <small>
+            Code by <a href="https://www.karltryggvason.com">Karl Tryggvason</a> and <a href="https://claude.ai">Claude.ai</a>. I think about running <i>a lot</i>, read more about it <a href="https://karltryggvason.com/running">here</a>.
+        </small>        
+    </div>
+</body>
+</html>
