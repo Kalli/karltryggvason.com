@@ -6,12 +6,13 @@ url: http://localhost:4000
 source:      .
 destination: ./_site
 plugins_dir:     ./_plugins
-
+plugins:
+  - jekyll-redirect-from
 future:      true
 lsi:         false
 highlighter:    null
 markdown:    kramdown
-permalink:   /:title
+permalink:   /:title/
 
 exclude: [/coffeescript/,/localdev.sh]
 
