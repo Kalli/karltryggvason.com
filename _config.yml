@@ -25,7 +25,8 @@ maruku:
 
 rdiscount:
   extensions: []
-
+whitelist:
+  - jekyll-redirect-from
 kramdown:
   auto_ids: true,
   footnote_nr: 1
