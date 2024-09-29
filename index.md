@@ -16,7 +16,8 @@ Hey there! My name is Karl Tryggvason, I'm  a software developer, runner, dj and
     <div class="span4 project">
         <a href="{{ page.url }}" title="{{ page.title }}">
         <div class="info">
-            <p>{{ page.overview }}</p>
+            <p><b>{{page.title}}</b><br><br>
+            {{ page.overview }}</p>
         </div>
         <img src="{{ page.thumb }}" alt="{{ page.title }}" class="img-circle thumb">
         </a>
