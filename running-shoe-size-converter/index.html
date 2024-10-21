@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Size Converter</title>
+
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    form {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 25px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        border-left: 5px solid #007bff;
+    }
+    
+    form h2 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #444;
+        margin-bottom: 8px;
+        display: block;
+    }
+    
+    select, input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0 20px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background-color: #f1f1f1;
+        font-size: 16px;
+        color: #333;
+        transition: border-color 0.3s ease;
+    }
+    
+    select:focus, input[type="submit"]:hover {
+        border-color: #007bff;
+    }
+    
+    input[type="submit"] {
+        background-color: #28a745;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        font-weight: bold;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #218838;
+    }
+    
+    /* Paragraph text styling for better separation */
+    p {
+        max-width: 600px;
+        margin: 20px auto;
+        line-height: 1.6;
+        font-size: 16px;
+        color: #666;
+        padding: 0 20px;
+        text-align: justify;
+    }
+
+    .result {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #e0f0ff;
+        color: #004085; 
+        border: 1px solid #004085;
+        font-size: 16px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    </style>
+</head>
+<body>
+    <h1>Shoe Size Converter</h1>
+    <form>
+        <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" onchange="populateSizes(document.getElementById('sourceBrand').value, document.getElementById('sourceType').value, this.value)">
+                <option>Men</option>
+                <option>Women</option>
+            </select>
+        </div>    
+        <div>
+            <label for="sourceBrand">From Brand:</label>
+            <select id="sourceBrand" onchange="populateSizes(this.value, document.getElementById('sourceType').value, document.getElementById('gender').value)">
+            </select>
+        </div>
+        <div>
+            <label for="sourceType">From Size Type:</label>
+            <select id="sourceType" onchange="populateSizes(document.getElementById('sourceBrand').value, this.value, document.getElementById('gender').value)">
+                <option value="EUR">EUR</option>
+                <option value="US">US</option>
+                <option value="UK">UK</option>
+            </select>
+        </div>
+        <div>
+            <label for="sourceSize">From Size:</label>
+            <select id="sourceSize" name="size" onchange="convertSize();" > 
+            </select>
+        </div>
+        
+        <div>
+            <label for="targetBrand">To Brand:</label>
+            <select id="targetBrand" onchange="convertSize();"></select>
+        </div>
+        <div id="result" class="result"></div>
+    </form>
+    <div class="description">
+        <div class="description">
+            <p>
+                Ever noticed how your shoe size can vary between different running brands? For example, a size 45 in Asics might feel more like a 45.5 in New Balance, or a Mizuno might feel half a size snugger than a Nike.
+            </p>
+            <p>
+                This converter helps you determine equivalent sizes across different brands and size types. Here's how to use it:
+            </p>
+            <ol>
+                <li>Select a shoe brand and size that you know fits you well.</li>
+                <li>Choose the brand you want to find an equivalent size for.</li>
+                <li>The tool will display the recommended size for the selected brand.</li>
+            </ol>
+            <p>
+                Our comparisons are based on charts from <a href="https://www.runningxpert.com/en/inspiration/running-shoe-size-guide">Running Xpert</a>, which uses the <abbr title="Centimeters">CM</abbr> (or <abbr title="Japanese size">JP</abbr>) measurements of different brands for accurate comparisons.
+            </p>
+            <p>
+                <strong>Important:</strong> This converter is for reference only. Always try on shoes for proper feel and fit before purchasing!
+            </p>
+        </div>
+    </div>
+    <script>
+        const menSizeData = [["Adidas","EUR",40.0,null,40.6,41.3,42.0,42.6,43.3,44.0,null,44.6,45.3,46.0,46.6,47.3,48.0,null],["Adidas","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Adidas","UK",6.5,null,7.0,7.5,8.0,8.5,9.0,9.5,null,10.0,10.5,11.0,11.5,12.0,12.5,null],["Altra","EUR",40.0,null,40.5,41.0,42.0,42.5,43.0,44.0,null,44.5,45.0,46.0,46.5,47.0,48.0,49.0],["Altra","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,14.0],["Altra","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,13.0],["Asics","EUR",39.5,40.0,40.5,41.5,42.0,42.5,43.5,44.0,44.5,45.0,46.0,46.5,47.0,48.0,49.0,null],["Asics","US",6.5,7.0,7.5,8.0,8.5,9.0,9.5,10.0,10.5,11.0,11.5,12.0,12.5,13.0,14.0,null],["Asics","UK",5.5,6.0,6.5,7.0,7.5,8.0,8.5,9.0,9.5,10.0,10.5,11.0,11.5,null,null,null],["Brooks","EUR",40.0,null,40.5,41.0,42.0,42.5,43.0,44.0,null,44.5,45.0,45.5,46.0,46.5,47.5,48.5],["Brooks","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,14.0],["Brooks","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,13.0],["Columbia Montrail","EUR",40.5,null,41.0,41.5,42.0,42.5,43.0,43.5,null,44.0,44.5,45.0,46.0,47.0,48.0,49.0],["Columbia Montrail","US",7.5,null,8.0,8.5,9.0,9.5,10.0,10.5,null,11.0,11.5,12.0,13.0,14.0,15.0,16.0],["Columbia Montrail","UK",6.5,null,7.0,7.5,8.0,8.5,9.0,9.5,null,10.0,10.5,11.0,12.0,13.0,14.0,15.0],["Craft","EUR",39.5,null,40.0,40.75,41.5,42.0,43.0,43.5,null,44.0,44.5,45.0,45.75,46.5,47.0,null],["Craft","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Craft","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,null],["Diadora","EUR",40.0,null,40.5,41.0,42.0,42.5,43.0,44.0,null,44.5,45.0,45.5,46.0,47.0,47.5,null],["Diadora","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Diadora","UK",6.5,null,7.0,7.5,8.0,8.5,9.0,9.5,null,10.0,10.5,11.0,11.5,12.0,12.5,null],["Hoka One One","EUR",40.0,null,40.6,41.3,42.0,42.6,43.3,44.0,null,44.6,45.3,46.0,46.6,47.3,48.0,null],["Hoka One One","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Hoka One One","UK",6.5,null,7.0,7.5,8.0,8.5,9.0,9.5,null,10.0,10.5,11.0,11.5,12.0,12.5,null],["Icebug","EUR",40.0,null,40.5,41.0,41.5,42.0,42.5,43.0,null,44.0,45.0,45.5,46.0,46.5,47.0,null],["Icebug","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Icebug","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,null],["Inov-8","EUR",39.5,null,40.0,40.5,41.5,42.0,42.5,43.0,null,44.0,44.5,45.0,45.5,46.5,47.0,48.0],["Inov-8","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,14.0],["Inov-8","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,13.0],["La Sportiva","EUR",39.5,null,40.0,40.5,41.0,42.0,42.5,43.0,null,43.5,44.5,45.0,45.5,46.0,null,null],["La Sportiva","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,null,null],["La Sportiva","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,null,null],["Mizuno","EUR",38.0,null,40.0,40.5,41.0,42.0,42.5,43.0,null,44.0,44.5,45.0,46.0,46.5,47.0,null],["Mizuno","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Mizuno","UK",6.0,null,6.6,7.0,7.5,8.0,8.6,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,null],["New Balance","EUR",40.0,null,40.5,41.5,42.0,42.5,43.0,44.0,null,44.5,45.0,45.5,46.5,47.0,47.5,null],["New Balance","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["New Balance","UK",6.5,null,7.0,7.5,8.0,8.5,9.0,9.5,null,10.0,10.5,11.0,11.5,12.0,12.5,null],["Nike","EUR",40.0,null,40.5,41.0,42.0,42.5,43.0,44.0,null,44.5,45.0,45.5,46.0,47.0,47.5,48.5],["Nike","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,14.0],["Nike","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,13.0],["On Running","EUR",40.0,null,40.5,41.0,42.0,42.5,43.0,44.0,null,44.6,45.0,46.0,47.0,47.5,48.0,49.0],["On Running","US",7.0,null,7.5,null,8.5,null,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,14.0],["On Running","UK",6.5,null,7.0,7.5,null,8.5,null,9.5,null,10.0,10.5,11.0,11.5,12.0,12.5,13.5],["Puma","EUR",39.0,null,40.0,40.5,41.0,42.0,42.5,43.0,null,44.0,44.5,45.0,46.0,46.5,47.0,null],["Puma","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Puma","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,null],["Salomon","EUR",40.0,null,40.6,0.3,42.0,42.6,43.3,44.0,null,44.6,45.3,46.0,46.6,47.3,48.0,null],["Salomon","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Salomon","UK",6.5,null,7.0,7.5,8.0,8.5,9.0,9.5,null,10.0,10.5,11.0,11.5,12.0,12.5,null],["Saucony","EUR",40.0,null,40.5,41.0,42.0,42.5,43.0,44.0,null,44.5,45.0,46.0,46.5,47.0,48.0,null],["Saucony","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Saucony","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,null],["Scott","EUR",40.0,null,40.5,41.0,42.0,42.5,43.0,44.0,null,44.5,45.0,45.5,46.0,47.0,47.5,48.5],["Scott","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,14.0],["Scott","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,13.0],["Skechers","EUR",39.5,null,40.0,41.0,42.0,42.5,43.0,43.5,null,44.0,44.5,45.0,45.5,46.0,47.0,null],["Skechers","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,null],["Skechers","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,null],["The Northface","EUR",39.0,null,40.0,40.5,41.0,42.0,42.5,43.0,null,44.0,44.5,45.0,45.5,46.0,47.0,48.0],["The Northface","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,14.0],["The Northface","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,13.0],["Topo","EUR",40.0,null,40.5,41.0,42.0,42.5,43.0,44.0,null,44.5,45.0,46.0,46.5,47.0,48.0,49.0],["Topo","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,14.0],["Topo","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,13.0],["Under Armour","EUR",40.0,null,40.5,41.0,42.0,42.5,43.0,44.0,null,44.5,45.0,45.5,46.0,47.0,47.5,48.5],["Under Armour","US",7.0,null,7.5,8.0,8.5,9.0,9.5,10.0,null,10.5,11.0,11.5,12.0,12.5,13.0,14.0],["Under Armour","UK",6.0,null,6.5,7.0,7.5,8.0,8.5,9.0,null,9.5,10.0,10.5,11.0,11.5,12.0,13.0]]; 
+        const womenSizeData = [["Adidas","EUR",36.0,36.6,37.3,38.0,38.6,"39.3",40.0,"40.6",null,41.3,42.0,42.6,null,null,null],["Adidas","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,null,null,null],["Adidas","UK",3.5,4.0,4.5,5.0,5.5,"6",6.5,"7",null,7.5,8.0,8.5,null,null,null],["Altra","EUR",36.0,37.0,37.5,38.0,38.5,"39",40.0,"40.5",null,41.0,42.0,42.5,43.0,null,null],["Altra","US",5.5,6.0,6.5,7.0,7.5,"8",8.5,"9",null,9.5,10.0,10.5,11.0,null,null],["Altra","UK",3.5,4.0,4.5,5.0,5.5,"6",6.5,"7",null,7.5,8.0,8.5,9.0,null,null],["Asics","EUR",35.5,36.0,37.0,37.5,38.0,"39",39.5,"40",40.5,41.5,42.0,42.5,43.5,null,null],["Asics","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",9.0,9.5,10.0,10.5,11.0,null,null],["Asics","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",7.0,7.5,8.0,8.5,9.0,null,null],["Brooks","EUR",35.5,36.0,36.5,37.5,38.0,"38.5",39.0,"40",null,40.5,41.0,42.0,null,null,null],["Brooks","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,null,null,null],["Brooks","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",null,7.0,7.5,8.0,null,null,null],["Columbia Montrail","EUR",36.0,36.5,37.0,37.5,38.0,"38.5",39.0,"39.5",null,40.0,40.5,41.0,41.5,null,null],["Columbia Montrail","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,10.5,null,null],["Columbia Montrail","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",null,7.0,7.5,8.0,8.5,null,null],["Craft","EUR",35.5,36.0,37.0,37.5,38.0,"38.75",39.5,"40",null,40.6,41.5,42.0,null,null,null],["Craft","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,null,null,null],["Craft","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",null,7.0,7.5,8.0,null,null,null],["Diadora","EUR",36.0,36.5,37.0,38.0,38.5,"39",40.0,"40.5",null,41.0,42.0,42.5,null,null,null],["Diadora","US",5.5,8.0,6.5,7.0,7.5,"a",8.5,"g",null,9.5,10.0,10.5,null,null,null],["Diadora","UK",3.5,4.0,4.5,5.0,5.5,"6",6.5,"7",null,7.5,8.0,8.5,null,null,null],["Hoka One One","EUR",36.0,36.6,37.3,38.0,38.6,"39.3",40.0,"40.6",null,41.3,42.0,42.6,null,null,null],["Hoka One One","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,95.0,10.0,null,null,null],["Hoka One One","UK",3.5,4.0,4.5,5.0,5.5,"6",6.5,"7",null,null,null,null,null,null,null],["Icebug","EUR",36.0,36.5,37.0,37.5,38.0,"39",40.0,"40.5",null,41.0,41.5,42.0,null,null,null],["Icebug","US",5.5,6.0,6.5,7.0,7.5,"8",8.5,"9",null,9.5,10.0,10.5,null,null,null],["Icebug","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",null,7.0,7.5,8.0,null,null,null],["Inov-8","EUR",35.5,36.0,37.0,37.5,38.0,"38.5",39.5,"40",null,40.5,41.5,42.0,42.5,null,null],["Inov-8","US",5.5,6.0,6.5,7.0,7.5,"8",8.5,"9",null,9.5,10.0,10.5,11.0,null,null],["Inov-8","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",null,7.0,7.5,8.0,8.5,null,null],["La Sportiva","EUR",36.0,36.5,37.0,37.5,38.0,"38.5",39.0,"39.5",null,40.0,40.5,41.0,41.5,null,null],["La Sportiva","US",5.0,5.5,6.0,6.5,7.0,"7.5",7.6,"8",null,8.5,9.0,9.5,9.6,null,null],["La Sportiva","UK",3.5,3.6,4.0,4.5,5.0,"5.5",5.6,"6",null,6.5,7.0,7.5,7.6,null,null],["Mizuno","EUR",35.0,36.0,36.5,37.0,38.0,"38.5",39.0,"40",null,40.5,41.0,42.0,null,null,null],["Mizuno","US",5.5,6.0,6.5,7.0,7.5,"8",8.5,"9",null,9.5,10.0,10.5,null,null,null],["Mizuno","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",null,7.0,7.5,8.0,null,null,null],["New Balance","EUR",35.0,36.0,36.5,37.0,37.5,"38",39.0,"40",null,40.5,41.0,41.5,42.5,null,null],["New Balance","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,10.5,null,null],["New Balance","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",null,7.0,7.5,8.0,8.5,null,null],["Nike","EUR",35.5,36.0,36.5,37.5,38.0,"38.5",39.0,"40",null,40.5,41.0,42.0,42.5,null,null],["Nike","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,10.5,null,null],["Nike","UK",2.5,3.0,3.5,4.0,4.5,"5",5.5,"6",null,6.5,7.0,7.5,8.0,null,null],["On Running","EUR",36.0,36.5,37.0,37.5,38.0,"38.5",39.0,"40",null,40.5,41.0,42.0,42.5,43.0,null],["On Running","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,8.0,9.5,10.0,10.5,11.0,null],["On Running","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",null,7.0,75.0,8.0,8.5,8.0,null],["Puma","EUR",35.0,30.0,36.5,37.0,38.0,"38.5",39.0,"40",null,40.5,41.0,42.0,null,null,null],["Puma","US",5.5,6.0,6.6,7.0,7.5,"8",8.5,"9",null,9.5,10.0,10.5,null,null,null],["Puma","UK",3.0,3.5,4.0,4.5,5.0,"5.5",6.0,"6.5",null,7.0,7.5,8.0,null,null,null],["The North Face","EUR",36.0,36.5,37.0,37.5,38.0,"38.5",39.0,"39.5",null,40.0,40.5,41.0,null,41.5,42.0],["The North Face","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,null,10.5,11.0],["The North Face","UK",3.0,3.5,4.0,4.5,5.0,"5.5",5.0,"5.5",null,7.0,7.5,8.0,null,8.5,9.0],["Salomon","EUR",36.0,36.6,37.3,38.0,38.6,"39.3",40.0,"40.6",null,41.3,42.0,42.6,43.3,null,null],["Salomon","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,10.5,null,null],["Salomon","UK",3.5,4.0,4.5,5.0,5.5,"6",6.5,"7",null,7.5,8.0,8.5,9.0,null,null],["Saucony","EUR",36.0,37.0,37.5,38.0,38.5,"39",40.0,"40.5",null,41.0,42.0,42.5,43.0,null,null],["Saucony","US",5.5,6.0,6.5,7.0,7.5,"8",8.5,"9",null,9.5,10.0,10.5,11.0,null,null],["Saucony","UK",3.5,4.0,4.5,5.55,6.0,"6.5",7.0,null,7.5,8.0,8.5,9.0,null,null,null],["Scott","EUR",null,null,36.5,37.5,38.0,"38.5",39.0,"40",null,40.5,41.0,42.0,42.5,43.0,null],["Scott","US",null,null,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,10.5,11.0,null],["Scott","UK",null,null,3.5,4.0,4.5,"5",5.5,"6",null,6.5,7.0,7.5,8.0,8.5,null],["Sketchers","EUR",35.0,35.5,36.0,36.5,37.0,"375",38.0,"38.5",null,39.0,39.5,40.0,40.5,null,null],["Skechers","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"9.5",null,9.0,9.5,10.0,10.5,null,null],["Sketchers","UK",2.0,2.5,3.0,3.5,4.0,"4.5",5.0,"5.5",null,6.0,6.5,7.0,7.5,null,null],["Topo","EUR",null,37.0,37.5,38.0,38.5,"39",40.0,"40.5",null,41.0,42.0,42.5,43.0,null,44.0],["Topo","US",null,6.0,6.5,7.0,7.5,"8",8.5,"9",null,9.5,10.0,10.5,11.0,null,12.0],["Topo","UK",null,4.0,4.5,5.0,5.5,"6",6.5,"7",null,7.5,8.0,8.5,9.0,null,10.0],["Under Armour","EUR",35.5,36.0,36.5,37.5,38.0,"38.5",39.0,"40",null,40.5,41.0,42.0,42.5,null,null],["Under Armour","US",5.0,5.5,6.0,6.5,7.0,"7.5",8.0,"8.5",null,9.0,9.5,10.0,10.5,null,null],["Under Armour","UK",2.5,3.0,3.5,4.0,4.5,"5",5.5,"6",null,6.5,7.0,7.5,8.0,null,null]];
+
+        function populateBrands() {
+            const brands = new Set();
+            for (let i = 1; i < menSizeData.length; i++) {
+                brands.add(menSizeData[i][0]);
+            }
+            const sourceBrand = document.getElementById('sourceBrand');
+            const targetBrand = document.getElementById('targetBrand');
+            let index = 0;
+            brands.forEach((brand) => {
+                sourceBrand.add(new Option(brand, brand, index==0, index==0));
+                targetBrand.add(new Option(brand, brand,  index==1, index==1));
+                ++index;
+            });
+        }
+        
+        
+        function populateSizes(selectedBrand, selectedType, gender){
+            const sizeData = (gender=='Men'? menSizeData : womenSizeData);
+            const brandSizeData = sizeData.find(e => e[0] === selectedBrand && e[1] === selectedType);
+            const sourceSizeSelect = document.getElementById('sourceSize');
+            sourceSizeSelect.innerHTML = '';
+            if (brandSizeData) {
+                for (let i = 2; i < brandSizeData.length; i++) {
+                    if (brandSizeData[i] !== null && brandSizeData[i] !== "") {
+                        const option = document.createElement('option');
+                        option.value = brandSizeData[i];
+                        option.textContent = brandSizeData[i];
+                        sourceSizeSelect.appendChild(option);
+                    }
+                }
+            }
+            convertSize();
+        }
+        function changeBrand(selectedBrand){
+            const targetBrand = document.getElementById('targetBrand');
+            for (let i = 0; i < targetBrand.options.length; i++) {
+                if (targetBrand.options[i].value === selectedBrand) {
+                    targetBrand.options[i].disabled = true;
+                } else {
+                    targetBrand.options[i].disabled = false;
+                }
+            }
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+            convertSize();
+        }
+        
+        function convertSize() {
+            const sourceBrand = document.getElementById('sourceBrand').value;
+            const sourceSize = parseFloat(document.getElementById('sourceSize').value);
+            const sourceType = document.getElementById('sourceType').value;
+            const targetBrand = document.getElementById('targetBrand').value;
+            const resultDiv = document.getElementById('result');
+            
+            const selectedGender = document.getElementById('gender').value;
+            const sizeData = selectedGender === 'Men' ? menSizeData : womenSizeData;
+            const sourceBrandData = sizeData.find(e => e[0] === sourceBrand && e[1] === sourceType);
+            const targetBrandData = sizeData.find(e => e[0] === targetBrand && e[1] === sourceType);
+            
+            const sourceIndex = sourceBrandData.indexOf(sourceSize);
+            const targetSize = targetBrandData[sourceIndex];
+            
+            if (targetSize) {
+                const intro = `A ${sourceType} ${selectedGender.toLowerCase()}s `;
+                const from = `size ${sourceSize}  in ${sourceBrand} is `;
+                const to = `equivalent to a size ${targetSize} in ${targetBrand}`;
+                resultDiv.innerHTML = intro + from + to;
+            } else {
+                resultDiv.textContent = "Unable to find equivalent size.";
+            }
+        }
+        populateBrands();
+        populateSizes(document.getElementById('sourceBrand').value, 'EUR', 'Men');
+    </script>
+</body>
+</html>
