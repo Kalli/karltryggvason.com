@@ -22,13 +22,16 @@ I want to see as many animals with tautonymic names as possible. Below is the li
 * [Ciconia ciconia](https://en.wikipedia.org/wiki/White_stork) - the white stork - 17.07.2020, Rijpwetering, The Netherlands.
 * [Gallinago gallinago](https://en.wikipedia.org/wiki/Common_snipe) - the common snipe - 23.06.2019, Fellsmörk, Iceland (my favourite bird!)
 * [Pyrrhula pyrhulla](https://en.wikipedia.org/wiki/Eurasian_bullfinch) - Eurasian bullfinch - 02.04.2023.
-* [Vulpes vulpes](https://en.wikipedia.org/wiki/Red_fox) - the red fox.
+* [Vulpes vulpes](https://en.wikipedia.org/wiki/Red_fox) - the red fox - 13.09.2023
+* [Pica Pica](https://en.wikipedia.org/wiki/Eurasian_magpie) - Eurasian magpie - 13.10.2024
+* [Bufo bufo](https://en.wikipedia.org/wiki/Common_toad) - European toad (not to be confused with Ben UFO aka BUFO one of my favourite dj's who I've also seen in the wild). - 13.04.2025
 
+  
 Then there are a few that I've definitely seen in the (semi)-wild but either it was before I started keeping track or it was without evidence or documentation: 
 
 * [Rattus rattus](https://en.wikipedia.org/wiki/Black_rat) - the black rat.
 * [Apus apus](https://en.wikipedia.org/wiki/Common_swift) - the common swift.
-* [Bufo bufo](https://en.wikipedia.org/wiki/Common_toad) - the common toad (not to be confused with Ben UFO aka BUFO one of my favourite dj's who I've also seen in the wild).
+
 
 Domestic animals or animals seen in captivity don't count towards my list.
 
