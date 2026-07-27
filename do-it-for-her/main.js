@@ -95,6 +95,16 @@ background.onload = () => {
             );
         });
     });
+
+    if (new URLSearchParams(window.location.search).has("test")) {
+        imagePlaces.forEach((place, i) => {
+            resizeableImage(
+                `./placeholders/placeholder${i + 1}.jpg`,
+                place,
+                `input${i + 1}`,
+            );
+        });
+    }
 };
 
 document.getElementById("download-button").addEventListener("click", () => {
