@@ -4,8 +4,8 @@ ctx.imageSmoothingEnabled = true;
 ctx.imageSmoothingQuality = "high";
 const wrapper = document.getElementById("canvas-container");
 const devicePixelRatio = window.devicePixelRatio || 1;
-const height = wrapper.scrollHeight * devicePixelRatio;
-const width = height * 1.8;
+let height = wrapper.scrollHeight * devicePixelRatio;
+let width = height * 1.8;
 ctx.scale(devicePixelRatio, devicePixelRatio);
 
 const imagePlaces = [
@@ -79,6 +79,40 @@ function checkOrientation() {
 // Check on initial load
 checkOrientation();
 
+const resizeCanvas = () => {
+    const rect = canvas.getBoundingClientRect();
+    const newWidth = Math.round(rect.width * devicePixelRatio);
+    const newHeight = Math.round(rect.height * devicePixelRatio);
+    if (newWidth === 0 || (newWidth === width && newHeight === height)) return;
+
+    const scaleX = newWidth / width;
+    const scaleY = newHeight / height;
+    height = newHeight;
+    width = newWidth;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    document.querySelectorAll(".resize-container").forEach((container) => {
+        const left = parseFloat(container.style.left) || 0;
+        const top = parseFloat(container.style.top) || 0;
+        const w = parseFloat(container.style.width) || 0;
+        const h = parseFloat(container.style.height) || 0;
+        container.style.left = left * scaleX + "px";
+        container.style.top = top * scaleY + "px";
+        container.style.width = w * scaleX + "px";
+        container.style.height = h * scaleY + "px";
+    });
+
+    drawBackground();
+};
+
+let resizeTimer;
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resizeCanvas, 150);
+});
+
 background.onload = () => {
     canvas.width = width;
     canvas.height = height;
@@ -125,6 +159,7 @@ const renderImage = () => {
     const canvasRect = ctx.canvas.getBoundingClientRect();
     const canvasOffsetX = window.scrollX + canvasRect.left;
     const canvasOffsetY = window.scrollY + canvasRect.top;
+    const bufferScale = canvas.width / canvasRect.width;
 
     Array.from(elements).forEach(function (element) {
         var img = element.querySelector("img");
@@ -134,8 +169,8 @@ const renderImage = () => {
                 const parentHeight = Number(element.style.height.replace("px", ""));
 
                 const rect = element.getBoundingClientRect();
-                const x = (window.scrollX + rect.left - canvasOffsetX) * devicePixelRatio;
-                const y = (window.scrollY + rect.top - canvasOffsetY) * devicePixelRatio;
+                const x = (window.scrollX + rect.left - canvasOffsetX) * bufferScale;
+                const y = (window.scrollY + rect.top - canvasOffsetY) * bufferScale;
 
                 const scaleX = parentWidth / img.naturalWidth;
                 const scaleY = parentHeight / img.naturalHeight;
@@ -159,11 +194,11 @@ const renderImage = () => {
                 // Calculate destination rectangle
                 const dx = x;
                 const dy = y;
-                const dWidth = visibleWidth * devicePixelRatio;
-                const dHeight = visibleHeight * devicePixelRatio;
+                const dWidth = visibleWidth * bufferScale;
+                const dHeight = visibleHeight * bufferScale;
 
                 // Radius for rounded corners (adjust as needed)
-                const radius = 5 * devicePixelRatio;
+                const radius = 5 * bufferScale;
 
                 drawRoundedImage(
                     ctx, 
