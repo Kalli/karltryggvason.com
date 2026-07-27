@@ -16,7 +16,8 @@ I want to see as many animals with tautonymic names as possible. Below is the li
 
 ### My list (so far)
 
-* [Anser anser](https://en.wikipedia.org/wiki/Greylag_goose) - the greylag goose - 16.07.2020, Alphen aan den Rijn, The Netherlands.    
+* [Anser anser](https://en.wikipedia.org/wiki/Greylag_goose) - the greylag goose - 16.07.2020, Alphen aan den Rijn, The Netherlands.
+* [Astacus astacus](https://en.wikipedia.org/wiki/Astacus_astacus) - European crayfish - 16.07.2026, Oslo, Norway.    
 * [Capreolus capreolus](https://en.wikipedia.org/wiki/Roe_deer) - Western roe deer - 08.07.2021, Dyrehaven, Denmark.
 * [Carduelis carduelis](https://en.wikipedia.org/wiki/European_goldfinch)- The European goldfinch - 16.06.2023
 * [Ciconia ciconia](https://en.wikipedia.org/wiki/White_stork) - the white stork - 17.07.2020, Rijpwetering, The Netherlands.
